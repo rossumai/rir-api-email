@@ -61,8 +61,8 @@ def msg_to_api(msg, api):
         if len(docs) >= MAX_ATTACHMENTS:
             break
 
-        # multipart/* are just containers
-        if part.get_content_maintype() == 'multipart':
+        # multipart/* and message/* are just containers
+        if part.get_content_maintype() in ['multipart', 'message']:
             continue
         # ignore standard body non-attachments
         if part.get_content_maintype() == 'text':
